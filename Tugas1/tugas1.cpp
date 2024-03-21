@@ -65,8 +65,8 @@ void useStatus() {
     cout << "HP " << hp_potion << endl;
     cout << "Mana " << mana_potion << endl;
     cout << "Swords: ";
-    for (string sword : swords) {
-        cout << sword << " ";
+    for (size_t i = 0; i < swords.size(); ++i) {
+        cout << swords[i] << " ";
     }
     cout << endl;
     cobalagi();
@@ -107,3 +107,4 @@ int main() {
     Menu();
     return 0;
 }
+
