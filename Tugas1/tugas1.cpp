@@ -6,9 +6,9 @@ int herbs;
 int hp_potion;
 int mana_potion;
 vector<string> swords;
-int stockHerbs = 100;
-int stockHp = 100;
-int stockMana = 100;
+int stockHerbs = 10;
+int stockHp = 10;
+int stockMana = 10;
 
 void cobalagi();
 
