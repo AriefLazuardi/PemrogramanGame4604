@@ -1,0 +1,100 @@
+[gd_scene load_steps=20 format=3 uid="uid://cjs28re5fih4e"]
+
+[ext_resource type="Script" path="res://assets/maincharacter/player_shield.gd" id="1_dofnw"]
+[ext_resource type="Texture2D" uid="uid://cg2capp3n4d8l" path="res://assets/maincharacter/vfxshield/vfxshield0.png" id="2_gduj2"]
+[ext_resource type="Texture2D" uid="uid://b3m7nx62hiuj8" path="res://assets/maincharacter/vfxshield/vfxshield1.png" id="3_h2i47"]
+[ext_resource type="Texture2D" uid="uid://dydf886sw4x5b" path="res://assets/maincharacter/vfxshield/vfxshield2.png" id="4_4xwam"]
+[ext_resource type="Texture2D" uid="uid://dvc102bd0y3bq" path="res://assets/maincharacter/vfxshield/vfxshield3.png" id="5_isexe"]
+[ext_resource type="Texture2D" uid="uid://c3ufbue0ntgu6" path="res://assets/maincharacter/vfxshield/vfxshield4.png" id="6_g1rd3"]
+[ext_resource type="Texture2D" uid="uid://biq2cern5lxpk" path="res://assets/maincharacter/vfxshield/vfxshield5.png" id="7_sm58l"]
+[ext_resource type="Texture2D" uid="uid://bld3uoow0ggv1" path="res://assets/maincharacter/vfxshield/vfxshield6.png" id="8_sfl37"]
+[ext_resource type="Texture2D" uid="uid://3uh20w8i8eal" path="res://assets/maincharacter/vfxshield/vfxshield7.png" id="9_17mha"]
+[ext_resource type="Texture2D" uid="uid://cexkkos7hyuem" path="res://assets/maincharacter/vfxshield/vfxshield8.png" id="10_udt6b"]
+[ext_resource type="Texture2D" uid="uid://cd2t1ynfu6ugj" path="res://assets/maincharacter/vfxshield/vfxshield9.png" id="11_w7gsj"]
+[ext_resource type="Texture2D" uid="uid://c2oufr8olswd0" path="res://assets/maincharacter/vfxshield/vfxshield10.png" id="12_5eoff"]
+[ext_resource type="Texture2D" uid="uid://c2h0gvvdt4b3u" path="res://assets/maincharacter/vfxshield/vfxshiedl12.png" id="13_kkquk"]
+[ext_resource type="Texture2D" uid="uid://csnm2skf4cerg" path="res://assets/maincharacter/vfxshield/vfxshield11.png" id="14_y63cu"]
+[ext_resource type="Texture2D" uid="uid://c7ttq7obe5uhw" path="res://assets/maincharacter/vfxshield/vfxshield13.png" id="15_4dspp"]
+[ext_resource type="Texture2D" uid="uid://dqemw2sgiv2kr" path="res://assets/maincharacter/vfxshield/vfxshield14.png" id="16_rega4"]
+[ext_resource type="Texture2D" uid="uid://qbosh58euj5u" path="res://assets/maincharacter/vfxshield/vfxshield15.png" id="17_puwxx"]
+[ext_resource type="Texture2D" uid="uid://lmw60h2yph0m" path="res://assets/maincharacter/vfxshield/vfxshield16.png" id="18_5q43v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc216"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gduj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h2i47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4xwam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_isexe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g1rd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sm58l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sfl37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_17mha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_udt6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w7gsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5eoff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kkquk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_y63cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4dspp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rega4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_puwxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_5q43v")
+}],
+"loop": true,
+"name": &"player_shield",
+"speed": 24.0
+}]
+
+[node name="PlayerShield" type="Node2D"]
+script = ExtResource("1_dofnw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -12)
+scale = Vector2(0.768111, 0.779415)
+sprite_frames = SubResource("SpriteFrames_sc216")
+animation = &"player_shield"
+frame_progress = 0.830326
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

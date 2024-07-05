@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0vpbdbqndxt2"]
+
+[ext_resource type="Script" path="res://assets/enemies/enemy_mushroom.gd" id="1_gepgv"]
+[ext_resource type="Texture2D" uid="uid://bdh5scbdiuh72" path="res://assets/enemies/mushrom.png" id="2_xlmlg"]
+[ext_resource type="Texture2D" uid="uid://cxin65k4h5rp7" path="res://assets/enemies/poisonmushrom.png" id="3_f456b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ts1e6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xlmlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f456b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2sls7"]
+
+[node name="Mushroom" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_gepgv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -19)
+sprite_frames = SubResource("SpriteFrames_ts1e6")
+animation = &"idle"
+frame_progress = 0.681644
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_2sls7")

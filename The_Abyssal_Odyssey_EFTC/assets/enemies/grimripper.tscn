@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://dgs18hxlwfjiv"]
+
+[ext_resource type="Script" path="res://assets/enemies/enemy_grimripper.gd" id="1_eeira"]
+[ext_resource type="Texture2D" uid="uid://bfayxi4m6lxxo" path="res://assets/enemies/HostileRunningReaper-Sheet.png" id="2_ngjs4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt817"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udgxa"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g017o"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aabop"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7uts"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwaww"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo8nk"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6uo"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efgga"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6dn5"]
+atlas = ExtResource("2_ngjs4")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yadqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt817")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udgxa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g017o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aabop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7uts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwaww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo8nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efgga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6dn5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp6un"]
+radius = 15.0
+height = 36.0
+
+[node name="EnemyGrimripper" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_eeira")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_yadqo")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.567305
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18)
+shape = SubResource("CapsuleShape2D_vp6un")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

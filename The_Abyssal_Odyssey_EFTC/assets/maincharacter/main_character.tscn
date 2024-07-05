@@ -1,0 +1,156 @@
+[gd_scene load_steps=23 format=3 uid="uid://7iwtvonrm4lr"]
+
+[ext_resource type="Script" path="res://assets/maincharacter/main_character.gd" id="1_48adv"]
+[ext_resource type="Texture2D" uid="uid://cx0avmp73gvol" path="res://assets/maincharacter/char idle/idle effect stand.png" id="1_cwv12"]
+[ext_resource type="Shader" uid="uid://bhxru46wf2tdx" path="res://assets/maincharacter/main_character_hit_flash_shader.tres" id="2_7acvo"]
+[ext_resource type="Texture2D" uid="uid://b61fwdtd2s86h" path="res://assets/maincharacter/char idle/idle stand.png" id="2_vqmg6"]
+[ext_resource type="Texture2D" uid="uid://bbc8odlyvepa7" path="res://assets/maincharacter/char view kanan/pixil-frame-1 kanan.png" id="3_wg6vb"]
+[ext_resource type="Texture2D" uid="uid://daer5nqo2o0pk" path="res://assets/maincharacter/char view kanan/pixil-frame-2 kanan.png" id="4_70hsi"]
+[ext_resource type="Texture2D" uid="uid://blijynfrdvqwp" path="res://assets/maincharacter/char jump/first jump.png" id="4_pru4u"]
+[ext_resource type="Texture2D" uid="uid://cywnx5dvuonto" path="res://assets/maincharacter/char view kanan/pixil-frame-3 kanan.png" id="5_2q487"]
+[ext_resource type="Texture2D" uid="uid://co43ljnvx8ne1" path="res://assets/maincharacter/char jump/air two.png" id="5_tn1e7"]
+[ext_resource type="Texture2D" uid="uid://f51yh3lgkh0d" path="res://assets/maincharacter/char jump/in the air.png" id="6_uw3f0"]
+[ext_resource type="Texture2D" uid="uid://fp4en7c8chd2" path="res://assets/maincharacter/char view kanan/pixil-frame-4 kanan.png" id="6_yxun5"]
+[ext_resource type="Texture2D" uid="uid://bspy6sfwhr557" path="res://assets/maincharacter/char view kanan/pixil-frame-5 kanan.png" id="7_gmktq"]
+[ext_resource type="Texture2D" uid="uid://bh6ee241hs5p" path="res://assets/maincharacter/char view kanan/pixil-frame-6 kanan.png" id="8_4ktop"]
+[ext_resource type="Texture2D" uid="uid://cyfe3wa3fdi28" path="res://assets/maincharacter/char view kanan/pixil-frame-7 kanan.png" id="9_huhjr"]
+[ext_resource type="Texture2D" uid="uid://d18237b8pixjl" path="res://assets/maincharacter/char view kanan/pixil-frame-8 kanan.png" id="10_ogvl7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1ne2"]
+shader = ExtResource("2_7acvo")
+shader_parameter/enabled = false
+shader_parameter/hit_color = Color(0.905388, 0, 0.108531, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dpjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cwv12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vqmg6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pru4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uw3f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tn1e7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wg6vb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_70hsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2q487")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yxun5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gmktq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ktop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_huhjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ogvl7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrhmb"]
+radius = 13.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x03k4"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_vhll6"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_282wt"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6h1v"]
+_data = {
+"RESET": SubResource("Animation_vhll6"),
+"hit": SubResource("Animation_282wt")
+}
+
+[node name="MainCharacter" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+script = ExtResource("1_48adv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_r1ne2")
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_7dpjx")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_qrhmb")
+
+[node name="HurtBox" type="Area2D" parent="."]
+scale = Vector2(1.05484, 1.02223)
+collision_layer = 2
+collision_mask = 4
+
+[node name="HurtBoxCollisionShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -17)
+shape = SubResource("CapsuleShape2D_x03k4")
+debug_color = Color(1, 0.00948809, 0.0353674, 0.42)
+
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k6h1v")
+}
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

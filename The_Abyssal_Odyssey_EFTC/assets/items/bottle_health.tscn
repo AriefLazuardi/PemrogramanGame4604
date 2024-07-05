@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5eu265boe4wy"]
+
+[ext_resource type="Texture2D" uid="uid://1xi6aqwgv8w" path="res://assets/items/bottlehealth.png" id="1_jom3r"]
+[ext_resource type="Script" path="res://assets/items/bottle_health.gd" id="1_ntd48"]
+[ext_resource type="Texture2D" uid="uid://vrfsw33s2bh" path="res://assets/items/efekhealth.png" id="2_2jvcq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twwbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2jvcq")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2jvcq")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2jvcq")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2jvcq")
+}],
+"loop": true,
+"name": &"collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jom3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3v04i"]
+radius = 4.0
+height = 16.0
+
+[node name="BottleHealth" type="Node2D"]
+script = ExtResource("1_ntd48")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Items"]]
+position = Vector2(0, -1)
+scale = Vector2(0.607491, 0.554695)
+sprite_frames = SubResource("SpriteFrames_twwbv")
+animation = &"collected"
+
+[node name="BottleHealthPickup" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottleHealthPickup"]
+shape = SubResource("CapsuleShape2D_3v04i")
+debug_color = Color(0.628967, 0.530256, 0, 0.42)
+
+[connection signal="body_entered" from="BottleHealthPickup" to="." method="_on_bottle_health_pickup_body_entered"]

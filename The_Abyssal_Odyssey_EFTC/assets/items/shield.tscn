@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnkiy8e0sko74"]
+
+[ext_resource type="Script" path="res://assets/items/shield.gd" id="1_85u6c"]
+[ext_resource type="Texture2D" uid="uid://ilsql3t7f6m6" path="res://assets/items/revshield.png" id="2_3olxl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjluv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3olxl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5abaa"]
+size = Vector2(23, 23)
+
+[node name="shield" type="Node2D" groups=["Items"]]
+script = ExtResource("1_85u6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qjluv")
+
+[node name="ShieldPickup" type="Area2D" parent="."]
+light_mask = 8
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldPickup"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_5abaa")
+
+[connection signal="body_entered" from="ShieldPickup" to="." method="_on_shield_pickup_body_entered"]
