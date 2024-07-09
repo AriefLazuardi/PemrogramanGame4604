@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqm6ujg7teh3d"]
+
+[ext_resource type="Texture2D" uid="uid://dk6vbdgb2l3uk" path="res://assets/background/pixil-frame-0 (7).png" id="1_ner4r"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(0, 560)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(196, -140)
+texture = ExtResource("1_ner4r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(195, -421)
+texture = ExtResource("1_ner4r")
+offset = Vector2(1, 1)
