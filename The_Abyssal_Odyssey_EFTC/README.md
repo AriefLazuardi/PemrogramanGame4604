@@ -13,3 +13,5 @@ The story of a brave and passionate young adventurer, who is accidentally trappe
 ## Main Menu Preview :
 
 ![image](https://github.com/AriefLazuardi/PemrogramanGame4604/blob/main/The_Abyssal_Odyssey_EFTC/ui/main_menu.png)
+![image](https://github.com/AriefLazuardi/PemrogramanGame4604/blob/main/The_Abyssal_Odyssey_EFTC/ui/gameplay1.png)
+![image](https://github.com/AriefLazuardi/PemrogramanGame4604/blob/main/The_Abyssal_Odyssey_EFTC/ui/gameplay2.png)
