@@ -1,6 +1,6 @@
 extends Node
 var main_menu_screen = preload("res://ui/main_menu_screen.tscn")
-var level_1 = preload("res://level/level_12.tscn")
+var level_1 = preload("res://level/test_level/test_level.tscn")
 var pause_menu_screen = preload("res://ui/pause_menu_screen.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
