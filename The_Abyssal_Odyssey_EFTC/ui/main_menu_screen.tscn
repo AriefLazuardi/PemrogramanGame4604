@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck1g8yc7xdno3"]
+
+[ext_resource type="Texture2D" uid="uid://0x2jpokdn55w" path="res://ui/theme/c73744eb8a7905f216d5d448643efe84.jpg" id="1_1v645"]
+[ext_resource type="Script" path="res://ui/main_menu_screen.gd" id="1_5g1nh"]
+[ext_resource type="Theme" uid="uid://bayodsactgiki" path="res://ui/theme/game_theme.tres" id="2_iwcub"]
+[ext_resource type="Texture2D" uid="uid://2kho76fq8gyb" path="res://ui/theme/in the air.png" id="3_uytsy"]
+[ext_resource type="Texture2D" uid="uid://beirtmq2t8oih" path="res://assets/enemies/flameshooter.png" id="5_u5k4a"]
+[ext_resource type="Texture2D" uid="uid://sk2gaprc5b7" path="res://assets/enemies/HostileRunningReaper.png" id="6_0ccq6"]
+[ext_resource type="Texture2D" uid="uid://bdh5scbdiuh72" path="res://assets/enemies/mushrom.png" id="7_5dc0a"]
+
+[node name="MainMenuScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_5g1nh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1v645")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_iwcub")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="SettingButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="InTheAir" type="Sprite2D" parent="."]
+position = Vector2(254, 232)
+texture = ExtResource("3_uytsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(158, 229)
+texture = ExtResource("5_u5k4a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(309, 230)
+scale = Vector2(1.15381, 1.04354)
+texture = ExtResource("6_0ccq6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(208, 227)
+texture = ExtResource("7_5dc0a")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.0
+offset_right = 178.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_iwcub")
+text = "The Abyssal Odyssey: Escape From The Chasm"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
